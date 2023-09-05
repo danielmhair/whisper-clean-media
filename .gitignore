@@ -31,6 +31,12 @@ libwhisper.a
 libwhisper.so
 compile_commands.json
 
+**/__pycache__
+**/*.mkv
+/media_cleaner/output.mp4
+media_cleaner/output.txt
+media_cleaner/output.wav
+
 examples/arm_neon.h
 examples/whisper.objc/whisper.objc.xcodeproj/xcshareddata
 examples/whisper.objc/whisper.objc.xcodeproj/xcuserdata/
