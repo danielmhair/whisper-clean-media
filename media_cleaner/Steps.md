@@ -28,6 +28,18 @@ python3 convert_to_wav.py
 
 python3 clean_transcription.py
 
+# Next steps: Finish cleaning words
+- Anything that starts with parenthesis combine until you find end parenthesis
+- Same for brackets
+- For lines that start only has [ wait until it has ]
+
+# Next Steps: Search for words that are bad and make a list and their associated time slots
+
+# Next Step: Then find the best way to remove the word from the audio
+
+# Next Step: Create the original format (video or audio file) with the cleaned audio
+
+
 # Remove Not-Safe-For-Work Images from video
 
 https://github.com/GantMan/nsfw_model
