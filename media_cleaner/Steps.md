@@ -24,7 +24,9 @@ python3 convert_to_wav.py
 # Need to clean up the audio to be full words
 ./main -m ./models/ggml-base.en.bin -f ./samples/output.wav -ml 1 >> output.txt
 
-# Now that we have the audio, 
+# Now that we have the audio, we need to clean the transcription to have full words
+
+python3 clean_transcription.py
 
 # Remove Not-Safe-For-Work Images from video
 
