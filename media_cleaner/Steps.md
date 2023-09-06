@@ -33,7 +33,7 @@ python3 clean_transcription.py
 - Same for brackets
 - For lines that start only has [ wait until it has ]
 
-# Next Step: Search for words that are profane and make a list and their associated time slots
+# Searched for words that are profane and made a list and their associated time slots
 
 ~pip install profanity-check~
 - Due to `ImportError: cannot import name 'joblib' from 'sklearn.externals' (/usr/local/lib/python3.8/dist-packages/sklearn/externals/__init__.py)`
@@ -42,6 +42,21 @@ pip install sklearn --upgrade
 
 
 # Next Step: Then find the best way to remove the word from the audio
+
+pip install spleeter
+
+Then:
+```
+from spleeter.separator import Separator
+
+# Initialize Spleeter
+separator = Separator('spleeter:2stems')
+
+# Perform the separation
+separator.separate_to_file('movie_audio_file.mp3', 'output_directory')
+```
+
+Haven't tried this yet...
 
 # Next Step: Create the original format (video or audio file) with the cleaned audio
 
