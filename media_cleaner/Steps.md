@@ -17,8 +17,8 @@ apt install ffmpeg
 
 cd samples
 python3 convert_to_wav.py
-/mnt/c/Users/danie/Workspace/whisper.cpp/samples/JurassicWorldCampCretaceous-s01e01.mkv
-/mnt/c/Users/danie/Workspace/whisper.cpp/samples/output.wav
+/mnt/c/Users/danie/Workspace/whisper-clean-media/media_cleaner/Ghostbusters (1984).mkv
+/mnt/c/Users/danie/Workspace/whisper-clean-media/media_cleaner/output.wav
 ./main -m ./models/ggml-base.en.bin -f ./samples/output.wav -ml 1
 
 # Need to clean up the audio to be full words
@@ -41,25 +41,32 @@ pip install alt-profanity-check
 pip install sklearn --upgrade
 
 
-# Next Step: Then find the best way to remove the word from the audio
+# Then find the best way to remove the word from the audio and create the original format (video or audio file) with the cleaned audio
 
 pip install spleeter
 
-Then:
-```
-from spleeter.separator import Separator
+python3 remove_profanity.py
 
-# Initialize Spleeter
-separator = Separator('spleeter:2stems')
 
-# Perform the separation
-separator.separate_to_file('movie_audio_file.mp3', 'output_directory')
-```
+# Full Steps
+python3 convert_to_wav.py
+/mnt/c/Users/danie/Workspace/whisper-clean-media/media_cleaner/Ghostbusters (1984).mkv
+/mnt/c/Users/danie/Workspace/whisper-clean-media/media_cleaner/output.wav
+./main -m ./models/ggml-base.en.bin -f ./samples/output.wav -ml 1 >> output.txt
+python3 remove_profanity.py
 
-Haven't tried this yet...
+# Next: The audio needs to go through a vocal separator before transcription
+## Use Ultimate Vocal Remover?
+https://github.com/Anjok07/ultimatevocalremovergui/blob/v5-beta-cml/README.md#ultimate-vocal-remover-v5-command-line-beta
 
-# Next Step: Create the original format (video or audio file) with the cleaned audio
 
+# Next: Use WhisperX instead of whisper.cpp? Might be more accurate...
+https://github.com/m-bain/whisperX
+
+
+
+# Next: Cleanvid for removing profanity from video using srt files. Should I just generate an srt?
+https://github.com/mmguero/cleanvid/tree/main
 
 # Remove Not-Safe-For-Work Images from video
 
