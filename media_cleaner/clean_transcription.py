@@ -43,24 +43,54 @@ def parse_text(line_str):
 
 def convert_to_words(text_dicts):
     clean_lines = []
+    stack = []  # To hold lines that start with "[" or "("
+    
     for line in text_dicts:
-        if len(clean_lines) == 0:
-            clean_lines.append(line)
-            continue
-        if line["text"].startswith(" "):
-            clean_lines.append(line)
+        # Check if a line starts with "[" or "("
+        if line["text"].strip().startswith("[") or line["text"].strip().startswith("("):
+            stack.append(line)
+        # Check if a line ends with "]" or ")"
+        elif line["text"].strip().endswith("]") or line["text"].strip().endswith(")"):
+            if len(stack) > 0:
+                # Merge from stack
+                start_line = stack.pop(0)  # Pop the first element
+                new_line = {
+                    "start_time": start_line["start_time"],
+                    "end_time": line["end_time"],
+                    "text": start_line["text"]
+                }
+                
+                # Concatenate all the lines in between and including the last line
+                for interim_line in stack:
+                    new_line["text"] += interim_line["text"]
+                new_line["text"] += line["text"]
+                
+                # Clear the stack for the next set of brackets
+                stack.clear()
+                
+                clean_lines.append(new_line)
+        # Normal case (no special brackets)
         else:
-            prev_line = clean_lines.pop()
-            new_line = {
-                "start_time": prev_line["start_time"],
-                "end_time": line["end_time"],
-                "text": prev_line["text"] + line["text"]
-            }
-            clean_lines.append(new_line)
-    print(clean_lines)
-    return "".join(list(map(lambda x: f"{x['start_time']} --> {x['end_time']}  {x['text']}\n", clean_lines)))
-
-
+            if line["text"] == "":
+                continue
+            if len(stack) > 0:
+                stack.append(line)
+                continue
+            if len(clean_lines) == 0:
+                clean_lines.append(line)
+                continue
+            
+            if line["text"].startswith(" "):
+                clean_lines.append(line)
+            else:
+                prev_line = clean_lines.pop()
+                new_line = {
+                    "start_time": prev_line["start_time"],
+                    "end_time": line["end_time"],
+                    "text": prev_line["text"] + line["text"]
+                }
+                clean_lines.append(new_line)
+    return clean_lines
 
 if __name__ == "__main__":
     path = "/mnt/c/Users/danie/Workspace/whisper-clean-media/media_cleaner/output.txt"

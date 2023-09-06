@@ -33,7 +33,7 @@ python3 clean_transcription.py
 - Same for brackets
 - For lines that start only has [ wait until it has ]
 
-# Next Steps: Search for words that are bad and make a list and their associated time slots
+# Next Step: Search for words that are profane and make a list and their associated time slots
 
 # Next Step: Then find the best way to remove the word from the audio
 
