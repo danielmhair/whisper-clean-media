@@ -33,12 +33,14 @@ compile_commands.json
 
 **/__pycache__
 **/*.mkv
+**/test.json
 **/*.mp4
 /media_cleaner/output.mp4
 media_cleaner/output.txt
 media_cleaner/output.wav
 media_cleaner/output/
 **/pretrained_models/
+mobilenet*/
 
 examples/arm_neon.h
 examples/whisper.objc/whisper.objc.xcodeproj/xcshareddata

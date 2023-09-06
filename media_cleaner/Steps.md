@@ -70,8 +70,29 @@ https://github.com/mmguero/cleanvid/tree/main
 
 # Remove Not-Safe-For-Work Images from video
 
-https://github.com/GantMan/nsfw_model
-https://github.com/infinitered/nsfwjs#host-your-own-model
-https://shift.infinite.red/avoid-nightmares-nsfw-js-ab7b176978b1
-https://github.com/vladmandic/nudenet
-https://github.com/notAI-tech/NudeNet/
+## Try out nsfw model
+- https://github.com/GantMan/nsfw_model
+  - https://github.com/infinitered/nsfwjs#host-your-own-model
+  - https://shift.infinite.red/avoid-nightmares-nsfw-js-ab7b176978b1
+
+### Upgraded to 3.10
+sudo apt install wget build-essential libreadline-gplv2-dev libncursesw5-dev \
+     libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
+wget https://www.python.org/ftp/python/3.10.8/Python-3.10.8.tgz 
+tar xzf Python-3.10.8.tgz 
+cd Python-3.10.8 
+./configure --enable-optimizations 
+make altinstall 
+poetry env use 3.10
+rm -rf Python-3.10.8.tgz Python-3.10.8
+
+poetry add tensorflow@2.9.0
+poetry add nsfw-detector
+./download_nsfw_model.sh
+poetry add opencv-python
+
+# Try Deep Nude as other wasnt the best
+- JS Version: https://github.com/vladmandic/nudenet
+  - Python Version: https://github.com/notAI-tech/NudeNet/
+
+pip install --upgrade nudenet
