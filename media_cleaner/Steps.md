@@ -28,12 +28,18 @@ python3 convert_to_wav.py
 
 python3 clean_transcription.py
 
-# Next steps: Finish cleaning words
+# Finished cleaning words (09/05/2023)
 - Anything that starts with parenthesis combine until you find end parenthesis
 - Same for brackets
 - For lines that start only has [ wait until it has ]
 
 # Next Step: Search for words that are profane and make a list and their associated time slots
+
+~pip install profanity-check~
+- Due to `ImportError: cannot import name 'joblib' from 'sklearn.externals' (/usr/local/lib/python3.8/dist-packages/sklearn/externals/__init__.py)`
+pip install alt-profanity-check
+pip install sklearn --upgrade
+
 
 # Next Step: Then find the best way to remove the word from the audio
 

@@ -21,7 +21,7 @@ from lib2to3.pytree import convert
 import os
 
 
-def parse_text(line_str):
+def parse_audio_ouput(line_str):
     lines = list(filter(lambda x: x, line_str.split("\n")))
     text_dicts = []
     for line in lines:
@@ -95,6 +95,6 @@ def convert_to_words(text_dicts):
 if __name__ == "__main__":
     path = "/mnt/c/Users/danie/Workspace/whisper-clean-media/media_cleaner/output.txt"
     with open(path, "r", encoding="ISO-8859-1") as f:
-        result = parse_text(f.read())
+        result = parse_audio_ouput(f.read())
         print('')
         print(result)
