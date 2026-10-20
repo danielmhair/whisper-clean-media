@@ -96,3 +96,8 @@ poetry add opencv-python
   - Python Version: https://github.com/notAI-tech/NudeNet/
 
 pip install --upgrade nudenet
+
+This worked to some degree, but its not giving back the expected results, but yet it works great when in the browser...
+Found the code here:
+https://github.com/notAI-tech/NudeNet/blob/v3/in_browser/src/utils/detect.js#L15
+Perhaps doing something like this in TS will do better?

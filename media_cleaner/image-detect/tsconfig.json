@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [
+      "esnext",
+      "dom",
+      "DOM.Iterable"
+    ],
+    "declaration": false,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": false,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "incremental": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"]
+}
